@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TemplateSelectorMAUI.Templates.IncomingImageTemplate"
+             xmlns:models="clr-namespace:TemplateSelectorMAUI.Models"
+             x:DataType="models:ChatModel">
+
+    <Border Stroke="Black"
+                    StrokeShape="RoundRectangle 8"
+                    StrokeThickness="1"
+                    WidthRequest="250"
+                    HorizontalOptions="End"
+                    Padding="10">
+        <VerticalStackLayout Spacing="10">
+            <Label Text="{Binding Message}"/>
+            <Image Source="{Binding Image}"
+                           Aspect="AspectFill"
+                           HeightRequest="100"
+                           WidthRequest="100"/>
+        </VerticalStackLayout>
+    </Border>
+</ContentView>

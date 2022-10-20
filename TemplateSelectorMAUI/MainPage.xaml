@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:TemplateSelectorMAUI.Models"
+             xmlns:templates="clr-namespace:TemplateSelectorMAUI.Templates"
+             x:Class="TemplateSelectorMAUI.MainPage"
+             Title="Data Template Selector">
+
+    <ContentPage.Resources>
+        
+        <!--<DataTemplate x:Key="IncomingMessage">
+            <Border Stroke="Gray"
+                    StrokeShape="RoundRectangle 20"
+                    StrokeThickness="1"
+                    WidthRequest="250"
+                    HorizontalOptions="Start"
+                    Padding="10">
+                <Label Text="{Binding Message}"/>
+            </Border>
+        </DataTemplate>
+        
+        <DataTemplate x:Key="OutgoingMessage">
+            <Border Stroke="Black"
+                    StrokeShape="RoundRectangle 20"
+                    StrokeThickness="1"
+                    WidthRequest="250"
+                    HorizontalOptions="End"
+                    Padding="10">
+                <Label Text="{Binding Message}"/>
+            </Border>
+        </DataTemplate>-->
+
+        <DataTemplate x:Key="IncomingMessage">
+            <templates:IncomingMessageTemplate />
+        </DataTemplate>
+
+        <DataTemplate  x:Key="OutgoingMessage">
+            <templates:OutgoingMessageTemplate />
+        </DataTemplate>
+        
+        <DataTemplate x:Key="IncomingImage">
+            <templates:IncomingImageTemplate />
+        </DataTemplate>
+
+        <DataTemplate  x:Key="OutgoingImage">
+            <templates:OutgoingImageTemplate />
+        </DataTemplate>
+        
+        <templates:TemplateSelector x:Key="TemplateSelector" 
+                              IncomingMessageTemplate="{StaticResource IncomingMessage}"
+                              OutgoingMessageTemplate="{StaticResource OutgoingMessage}"
+                              IncomingMessageWithImageTemplate="{StaticResource IncomingImage}"
+                              OutgoingMessageWithImageTemplate="{StaticResource OutgoingImage}"
+                                    />
+
+    </ContentPage.Resources>
+    
+    <CollectionView ItemsSource="{Binding Chats}" 
+                    Margin="10"
+                    ItemTemplate="{StaticResource TemplateSelector}">
+        <!--<CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="models:ChatModel">
+                <VerticalStackLayout Margin="5">
+                    <Label Text="{Binding From}" />
+                    <Label Text="{Binding Message}" />
+                    <Image Source="{Binding Image}"
+                           IsVisible="{Binding ShowImage}"
+                           Aspect="AspectFill"
+                           HeightRequest="100"
+                           WidthRequest="100"/>
+                </VerticalStackLayout>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>-->
+    </CollectionView>
+
+</ContentPage>
